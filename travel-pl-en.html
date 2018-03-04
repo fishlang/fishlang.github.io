@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fishlang - bilingual texts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Dosis|Nanum+Gothic" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114999359-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-114999359-1');
+    </script>
+
+    <style>
+        body {
+            font-family: 'Dosis', sans-serif;
+        }
+
+        .kr {
+
+            font-family: 'Nanum Gothic', sans-serif;
+
+
+        }
+    </style>
+    <script>
+        function applyFilter() {
+            // Declare variables
+            var filter, lang1, lang2;
+            lang1 = document.querySelector("#lang1").value;
+            lang2 = document.querySelector("#lang2").value;
+            //example filter text -> (en - kr)
+            filter = "(" + lang1 + " - " + lang2 + ")";
+
+            //get all btns
+            var searchList = document.querySelector("#text-list");
+            var buttons = searchList.children;
+            console.log("buttons count: " + buttons.length);
+            //filter buttons by language
+            for (var i = 0; i < buttons.length; i++) {
+                var btn = buttons[i];
+                var content = btn.innerHTML;
+                var foundAt = content.indexOf(filter)
+                //console.log("found index : " + foundAt);
+                if (foundAt > -1) {
+                    btn.style.display = "";
+                } else {
+                    btn.style.display = "none";
+                }
+            }
+        }
+        function setCookies(name, val, days) {
+            var start = new Date();
+            var end = new Date();
+            end.setTime(start.getTime() + 1000 * 60 * 60 * 24 * days);
+            document.cookie = name + "=" + escape(val) + ";expires=" + end.toGMTString();
+            applyFilter();
+        }
+        window.onload = onWindowLoad;
+
+        function onWindowLoad() {
+            var lang1 = getCookies("lang1");
+            var lang2 = getCookies("lang2");
+            if (lang1 == "") lang1 = "en";
+            if (lang2 == "") lang2 = "pl";
+            //if have any cookies
+            document.querySelector("#lang1").value = lang1;
+            document.querySelector("#lang2").value = lang2;
+            applyFilter();
+
+        }
+
+        function getCookies(cookieName) {
+            var find = cookieName + "=";
+            var splitted = document.cookie.split(';');
+            for (var i = 0; i < splitted.length; i++) {
+                var oneCookie = splitted[i];
+                while (oneCookie.charAt(0) == ' ') {
+                    oneCookie = oneCookie.substring(1);
+                }
+                if (oneCookie.indexOf(find) == 0) {
+                    return oneCookie.substring(find.length, oneCookie.length);
+                }
+            }
+            return "";
+        }
+    </script>
+</head>
+<body>
+    <section class="hero is-info is-bold has-text-centered">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                fishlang
+            </h1>
+            <h2 class="subtitle">
+                learn language with bilingual texts
+            </h2>
+
+        </div>
+    </div>
+</section>
+    <section class="section has-text-centered">
+        <div>
+            <p class="title">travel (pl - en)</p>
+            <div>
+                
+<p class="pl">Podróżowanie jest bardzo przyjemnym i drogim hobby.</p>
+<p class="en">Traveling is very fun and expensive hobby.</p>
+
+<p class="pl">Wiele osób lubi podróże.</p>
+<p class="en">Lot of people like traveling.</p>
+
+<p class="pl">Bilety lotnicze są obecnie tańsze, więc łatwiej jest podróżować do innych krajów.</p>
+<p class="en">Airplane tickets get cheaper these days, so it is easier to travel to another countries.</p>
+
+<p class="pl">Dużo podróżowałem do różnych krajów.</p>
+<p class="en">I traveled a lot to different countries.</p>
+
+<p class="pl">Wydałem na to dużo pieniędzy, ale nie żałuję tego.</p>
+<p class="en">I spent a lot of money on it, but I don't regret it.</p>
+
+<p class="pl">Podobały mi się wszystkie moje podróże.</p>
+<p class="en">I enjoyed all my trips.</p>
+
+<p class="pl">Ale ostatnio czułem, że czegoś mi brakuje w moich podróżach.</p>
+<p class="en">But recently i felt that something was missing in my trips.</p>
+
+<p class="pl">Moja dziewczyna miała to samo uczucie.</p>
+<p class="en">My girlfriend had the same feeling.</p>
+
+<p class="pl">Zawsze spieszę się i próbuję zobaczyć jak najwięcej znanych miejsc turystycznych.</p>
+<p class="en">I always rush and try to see most of famous touristic spots.</p>
+
+<p class="pl">Ale nie wiem wystarczająco dużo o historii tych miejsc.</p>
+<p class="en">But I don't know enough about the history of those places.</p>
+
+<p class="pl">Moja dziewczyna powiedziała mi: "Następnym razem powinniśmy dowiedzieć się więcej o miejscach, do których podróżujemy".</p>
+<p class="en">My girlfriend said to me: “Next time we should learn more about places we travel”.</p>
+
+<p class="pl">Zgodziłem się.</p>
+<p class="en">I agreed.</p>
+
+<p class="pl">Czas kupić podręczniki historii i przygotować się do następnej podróży.</p>
+<p class="en">It is time to buy some history textbooks and prepare for the next trip.</p>
+
+            </div>
+        </div>
+        <hr> 
+        <a class="button is-info" href="/">
+        <span class="icon">
+  <i class="fas fa-home"></i>
+</span>
+  </a>
+    </section>
+</body>
+</html>

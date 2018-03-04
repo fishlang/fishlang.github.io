@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fishlang - bilingual texts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Dosis|Nanum+Gothic" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114999359-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-114999359-1');
+    </script>
+
+    <style>
+        body {
+            font-family: 'Dosis', sans-serif;
+        }
+
+        .kr {
+
+            font-family: 'Nanum Gothic', sans-serif;
+
+
+        }
+    </style>
+    <script>
+        function applyFilter() {
+            // Declare variables
+            var filter, lang1, lang2;
+            lang1 = document.querySelector("#lang1").value;
+            lang2 = document.querySelector("#lang2").value;
+            //example filter text -> (en - kr)
+            filter = "(" + lang1 + " - " + lang2 + ")";
+
+            //get all btns
+            var searchList = document.querySelector("#text-list");
+            var buttons = searchList.children;
+            console.log("buttons count: " + buttons.length);
+            //filter buttons by language
+            for (var i = 0; i < buttons.length; i++) {
+                var btn = buttons[i];
+                var content = btn.innerHTML;
+                var foundAt = content.indexOf(filter)
+                //console.log("found index : " + foundAt);
+                if (foundAt > -1) {
+                    btn.style.display = "";
+                } else {
+                    btn.style.display = "none";
+                }
+            }
+        }
+        function setCookies(name, val, days) {
+            var start = new Date();
+            var end = new Date();
+            end.setTime(start.getTime() + 1000 * 60 * 60 * 24 * days);
+            document.cookie = name + "=" + escape(val) + ";expires=" + end.toGMTString();
+            applyFilter();
+        }
+        window.onload = onWindowLoad;
+
+        function onWindowLoad() {
+            var lang1 = getCookies("lang1");
+            var lang2 = getCookies("lang2");
+            if (lang1 == "") lang1 = "en";
+            if (lang2 == "") lang2 = "pl";
+            //if have any cookies
+            document.querySelector("#lang1").value = lang1;
+            document.querySelector("#lang2").value = lang2;
+            applyFilter();
+
+        }
+
+        function getCookies(cookieName) {
+            var find = cookieName + "=";
+            var splitted = document.cookie.split(';');
+            for (var i = 0; i < splitted.length; i++) {
+                var oneCookie = splitted[i];
+                while (oneCookie.charAt(0) == ' ') {
+                    oneCookie = oneCookie.substring(1);
+                }
+                if (oneCookie.indexOf(find) == 0) {
+                    return oneCookie.substring(find.length, oneCookie.length);
+                }
+            }
+            return "";
+        }
+    </script>
+</head>
+<body>
+    <section class="hero is-info is-bold has-text-centered">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                fishlang
+            </h1>
+            <h2 class="subtitle">
+                learn language with bilingual texts
+            </h2>
+
+        </div>
+    </div>
+</section>
+    <section class="section has-text-centered">
+        <div>
+            <p class="title">smartphones (en - pl)</p>
+            <div>
+                
+<p class="en">I still remember times when smartphones didn't exist.</p>
+<p class="pl">Wciąż pamiętam czasy, kiedy smartfony nie istniały.</p>
+
+<p class="en">When I was a kid I had only stationary phone.</p>
+<p class="pl">Kiedy byłem dzieckiem, miałem tylko stacjonarny telefon.</p>
+
+<p class="en">It didn't have a buttons.</p>
+<p class="pl">Nie miał przycisków.</p>
+
+<p class="en">It had big circle with numbers.</p>
+<p class="pl">Miał duże koło z liczbami.</p>
+
+<p class="en">You had to put your finger in one of the holes in the circle.</p>
+<p class="pl">Musiałeś wsunąć palec w jedną z dziur w kole.</p>
+
+<p class="en">Each hole had one number in it.</p>
+<p class="pl">Każdy otwór miał jedną cyfrę.</p>
+
+<p class="en">Then you had to rotate the circle.</p>
+<p class="pl">Potem trzeba było obrócić kółko.</p>
+
+<p class="en">It took lot of time to dial a number.</p>
+<p class="pl">Potrzeba było dużo czasu, aby wybrać numer.</p>
+
+<p class="en">Smartphones are much more easier to use.</p>
+<p class="pl">Smartfony są o wiele łatwiejsze w użyciu.</p>
+
+<p class="en">Even little kids who cannot read know how to use smartphone.</p>
+<p class="pl">Nawet małe dzieci, które nie potrafią czytać, wiedzą, jak korzystać ze smartfonu.</p>
+
+<p class="en">They know how to watch youtube or play a game.</p>
+<p class="pl">Wiedzą, jak oglądać youtube lub grać w grę.</p>
+
+<p class="en">Lot of people criticize giving smartphones to children.</p>
+<p class="pl">Wiele osób krytykuje dawanie smartfonów dzieciom.</p>
+
+<p class="en">Those people are afraid that children will get addicted to games.</p>
+<p class="pl">Ludzie boją się, że dzieci uzależnią się od gier.</p>
+
+            </div>
+        </div>
+        <hr> 
+        <a class="button is-info" href="/">
+        <span class="icon">
+  <i class="fas fa-home"></i>
+</span>
+  </a>
+    </section>
+</body>
+</html>

@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fishlang - bilingual texts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Dosis|Nanum+Gothic" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114999359-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-114999359-1');
+    </script>
+
+    <style>
+        body {
+            font-family: 'Dosis', sans-serif;
+        }
+
+        .kr {
+
+            font-family: 'Nanum Gothic', sans-serif;
+
+
+        }
+    </style>
+    <script>
+        function applyFilter() {
+            // Declare variables
+            var filter, lang1, lang2;
+            lang1 = document.querySelector("#lang1").value;
+            lang2 = document.querySelector("#lang2").value;
+            //example filter text -> (en - kr)
+            filter = "(" + lang1 + " - " + lang2 + ")";
+
+            //get all btns
+            var searchList = document.querySelector("#text-list");
+            var buttons = searchList.children;
+            console.log("buttons count: " + buttons.length);
+            //filter buttons by language
+            for (var i = 0; i < buttons.length; i++) {
+                var btn = buttons[i];
+                var content = btn.innerHTML;
+                var foundAt = content.indexOf(filter)
+                //console.log("found index : " + foundAt);
+                if (foundAt > -1) {
+                    btn.style.display = "";
+                } else {
+                    btn.style.display = "none";
+                }
+            }
+        }
+        function setCookies(name, val, days) {
+            var start = new Date();
+            var end = new Date();
+            end.setTime(start.getTime() + 1000 * 60 * 60 * 24 * days);
+            document.cookie = name + "=" + escape(val) + ";expires=" + end.toGMTString();
+            applyFilter();
+        }
+        window.onload = onWindowLoad;
+
+        function onWindowLoad() {
+            var lang1 = getCookies("lang1");
+            var lang2 = getCookies("lang2");
+            if (lang1 == "") lang1 = "en";
+            if (lang2 == "") lang2 = "pl";
+            //if have any cookies
+            document.querySelector("#lang1").value = lang1;
+            document.querySelector("#lang2").value = lang2;
+            applyFilter();
+
+        }
+
+        function getCookies(cookieName) {
+            var find = cookieName + "=";
+            var splitted = document.cookie.split(';');
+            for (var i = 0; i < splitted.length; i++) {
+                var oneCookie = splitted[i];
+                while (oneCookie.charAt(0) == ' ') {
+                    oneCookie = oneCookie.substring(1);
+                }
+                if (oneCookie.indexOf(find) == 0) {
+                    return oneCookie.substring(find.length, oneCookie.length);
+                }
+            }
+            return "";
+        }
+    </script>
+</head>
+
+<body>
+  <section class="hero is-info is-bold has-text-centered">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                fishlang
+            </h1>
+            <h2 class="subtitle">
+                learn language with bilingual texts
+            </h2>
+
+        </div>
+    </div>
+</section>
+  <section class="section has-text-centered">
+
+    <div>
+      <p class="title">Select languages</p>
+      <span class="icon">
+        <i class="fa fa-comments fa-lg"></i>
+      </span>
+      <br>
+      <br>
+
+      <div>
+        <div class="select">
+          <select id="lang1" onchange="setCookies('lang1', this.value, 60)">
+            <option>en</option>
+            <option>kr</option>
+            <option>jp</option>
+            <option>pl</option>
+          </select>
+        </div>
+        <div class="select">
+          <select id="lang2" onchange="setCookies('lang2', this.value, 60)">
+            <option>kr</option>
+            <option>jp</option>
+            <option>pl</option>
+            <option>en</option>
+          </select>
+        </div>
+       <!-- <button class="button is-info" onclick="applyFilter()">Apply filter</button> -->
+      </div>
+    </div>
+
+    <hr>
+    <div>
+
+
+      <div id="text-list" class="buttons">
+        
+        <a class="button" href="calendar-en-jp.html">
+          calendar (en - jp)
+        </a>
+        <a class="button" href="calendar-en-pl.html">
+          calendar (en - pl)
+        </a>
+        <a class="button" href="calendar-jp-en.html">
+          calendar (jp - en)
+        </a>
+        <a class="button" href="calendar-jp-pl.html">
+          calendar (jp - pl)
+        </a>
+        <a class="button" href="calendar-pl-en.html">
+          calendar (pl - en)
+        </a>
+        <a class="button" href="calendar-pl-jp.html">
+          calendar (pl - jp)
+        </a>
+        <a class="button" href="cars-en-pl.html">
+          cars (en - pl)
+        </a>
+        <a class="button" href="cars-pl-en.html">
+          cars (pl - en)
+        </a>
+        <a class="button" href="cats-en-pl.html">
+          cats (en - pl)
+        </a>
+        <a class="button" href="cats-pl-en.html">
+          cats (pl - en)
+        </a>
+        <a class="button" href="cleaning-en-pl.html">
+          cleaning (en - pl)
+        </a>
+        <a class="button" href="cleaning-pl-en.html">
+          cleaning (pl - en)
+        </a>
+        <a class="button" href="clothes-en-pl.html">
+          clothes (en - pl)
+        </a>
+        <a class="button" href="clothes-pl-en.html">
+          clothes (pl - en)
+        </a>
+        <a class="button" href="computers-en-pl.html">
+          computers (en - pl)
+        </a>
+        <a class="button" href="computers-pl-en.html">
+          computers (pl - en)
+        </a>
+        <a class="button" href="cooking-en-pl.html">
+          cooking (en - pl)
+        </a>
+        <a class="button" href="cooking-pl-en.html">
+          cooking (pl - en)
+        </a>
+        <a class="button" href="gym-en-jp.html">
+          gym (en - jp)
+        </a>
+        <a class="button" href="gym-en-pl.html">
+          gym (en - pl)
+        </a>
+        <a class="button" href="gym-jp-en.html">
+          gym (jp - en)
+        </a>
+        <a class="button" href="gym-jp-pl.html">
+          gym (jp - pl)
+        </a>
+        <a class="button" href="gym-pl-en.html">
+          gym (pl - en)
+        </a>
+        <a class="button" href="gym-pl-jp.html">
+          gym (pl - jp)
+        </a>
+        <a class="button" href="jogging-en-pl.html">
+          jogging (en - pl)
+        </a>
+        <a class="button" href="jogging-pl-en.html">
+          jogging (pl - en)
+        </a>
+        <a class="button" href="line-by-line-en-jp.html">
+          line by line (en - jp)
+        </a>
+        <a class="button" href="line-by-line-en-pl.html">
+          line by line (en - pl)
+        </a>
+        <a class="button" href="line-by-line-jp-en.html">
+          line by line (jp - en)
+        </a>
+        <a class="button" href="line-by-line-jp-pl.html">
+          line by line (jp - pl)
+        </a>
+        <a class="button" href="line-by-line-pl-en.html">
+          line by line (pl - en)
+        </a>
+        <a class="button" href="line-by-line-pl-jp.html">
+          line by line (pl - jp)
+        </a>
+        <a class="button" href="passion-en-pl.html">
+          passion (en - pl)
+        </a>
+        <a class="button" href="passion-pl-en.html">
+          passion (pl - en)
+        </a>
+        <a class="button" href="peanuts-cafe-en-jp.html">
+          peanuts cafe (en - jp)
+        </a>
+        <a class="button" href="peanuts-cafe-en-pl.html">
+          peanuts cafe (en - pl)
+        </a>
+        <a class="button" href="peanuts-cafe-jp-en.html">
+          peanuts cafe (jp - en)
+        </a>
+        <a class="button" href="peanuts-cafe-jp-pl.html">
+          peanuts cafe (jp - pl)
+        </a>
+        <a class="button" href="peanuts-cafe-pl-en.html">
+          peanuts cafe (pl - en)
+        </a>
+        <a class="button" href="peanuts-cafe-pl-jp.html">
+          peanuts cafe (pl - jp)
+        </a>
+        <a class="button" href="perfect-en-pl.html">
+          perfect (en - pl)
+        </a>
+        <a class="button" href="perfect-pl-en.html">
+          perfect (pl - en)
+        </a>
+        <a class="button" href="religion-en-jp.html">
+          religion (en - jp)
+        </a>
+        <a class="button" href="religion-en-pl.html">
+          religion (en - pl)
+        </a>
+        <a class="button" href="religion-jp-en.html">
+          religion (jp - en)
+        </a>
+        <a class="button" href="religion-jp-pl.html">
+          religion (jp - pl)
+        </a>
+        <a class="button" href="religion-pl-en.html">
+          religion (pl - en)
+        </a>
+        <a class="button" href="religion-pl-jp.html">
+          religion (pl - jp)
+        </a>
+        <a class="button" href="rice-en-pl.html">
+          rice (en - pl)
+        </a>
+        <a class="button" href="rice-pl-en.html">
+          rice (pl - en)
+        </a>
+        <a class="button" href="shopping-en-jp.html">
+          shopping (en - jp)
+        </a>
+        <a class="button" href="shopping-en-pl.html">
+          shopping (en - pl)
+        </a>
+        <a class="button" href="shopping-jp-en.html">
+          shopping (jp - en)
+        </a>
+        <a class="button" href="shopping-jp-pl.html">
+          shopping (jp - pl)
+        </a>
+        <a class="button" href="shopping-pl-en.html">
+          shopping (pl - en)
+        </a>
+        <a class="button" href="shopping-pl-jp.html">
+          shopping (pl - jp)
+        </a>
+        <a class="button" href="sleep-en-jp.html">
+          sleep (en - jp)
+        </a>
+        <a class="button" href="sleep-en-pl.html">
+          sleep (en - pl)
+        </a>
+        <a class="button" href="sleep-jp-en.html">
+          sleep (jp - en)
+        </a>
+        <a class="button" href="sleep-jp-pl.html">
+          sleep (jp - pl)
+        </a>
+        <a class="button" href="sleep-pl-en.html">
+          sleep (pl - en)
+        </a>
+        <a class="button" href="sleep-pl-jp.html">
+          sleep (pl - jp)
+        </a>
+        <a class="button" href="smartphones-en-pl.html">
+          smartphones (en - pl)
+        </a>
+        <a class="button" href="smartphones-pl-en.html">
+          smartphones (pl - en)
+        </a>
+        <a class="button" href="snow-en-jp.html">
+          snow (en - jp)
+        </a>
+        <a class="button" href="snow-en-pl.html">
+          snow (en - pl)
+        </a>
+        <a class="button" href="snow-jp-en.html">
+          snow (jp - en)
+        </a>
+        <a class="button" href="snow-jp-pl.html">
+          snow (jp - pl)
+        </a>
+        <a class="button" href="snow-pl-en.html">
+          snow (pl - en)
+        </a>
+        <a class="button" href="snow-pl-jp.html">
+          snow (pl - jp)
+        </a>
+        <a class="button" href="standup-comedy-en-pl.html">
+          standup comedy (en - pl)
+        </a>
+        <a class="button" href="standup-comedy-pl-en.html">
+          standup comedy (pl - en)
+        </a>
+        <a class="button" href="trains-in-japan-en-kr.html">
+          trains in japan (en - kr)
+        </a>
+        <a class="button" href="trains-in-japan-en-jp.html">
+          trains in japan (en - jp)
+        </a>
+        <a class="button" href="trains-in-japan-en-pl.html">
+          trains in japan (en - pl)
+        </a>
+        <a class="button" href="trains-in-japan-kr-en.html">
+          trains in japan (kr - en)
+        </a>
+        <a class="button" href="trains-in-japan-kr-jp.html">
+          trains in japan (kr - jp)
+        </a>
+        <a class="button" href="trains-in-japan-kr-pl.html">
+          trains in japan (kr - pl)
+        </a>
+        <a class="button" href="trains-in-japan-jp-en.html">
+          trains in japan (jp - en)
+        </a>
+        <a class="button" href="trains-in-japan-jp-kr.html">
+          trains in japan (jp - kr)
+        </a>
+        <a class="button" href="trains-in-japan-jp-pl.html">
+          trains in japan (jp - pl)
+        </a>
+        <a class="button" href="trains-in-japan-pl-en.html">
+          trains in japan (pl - en)
+        </a>
+        <a class="button" href="trains-in-japan-pl-kr.html">
+          trains in japan (pl - kr)
+        </a>
+        <a class="button" href="trains-in-japan-pl-jp.html">
+          trains in japan (pl - jp)
+        </a>
+        <a class="button" href="travel-en-jp.html">
+          travel (en - jp)
+        </a>
+        <a class="button" href="travel-en-pl.html">
+          travel (en - pl)
+        </a>
+        <a class="button" href="travel-jp-en.html">
+          travel (jp - en)
+        </a>
+        <a class="button" href="travel-jp-pl.html">
+          travel (jp - pl)
+        </a>
+        <a class="button" href="travel-pl-en.html">
+          travel (pl - en)
+        </a>
+        <a class="button" href="travel-pl-jp.html">
+          travel (pl - jp)
+        </a>
+        <a class="button" href="tv-black-mirror-en-pl.html">
+          tv black mirror (en - pl)
+        </a>
+        <a class="button" href="tv-black-mirror-pl-en.html">
+          tv black mirror (pl - en)
+        </a>
+        <a class="button" href="tv-black-sails-en-jp.html">
+          tv black sails (en - jp)
+        </a>
+        <a class="button" href="tv-black-sails-en-pl.html">
+          tv black sails (en - pl)
+        </a>
+        <a class="button" href="tv-black-sails-jp-en.html">
+          tv black sails (jp - en)
+        </a>
+        <a class="button" href="tv-black-sails-jp-pl.html">
+          tv black sails (jp - pl)
+        </a>
+        <a class="button" href="tv-black-sails-pl-en.html">
+          tv black sails (pl - en)
+        </a>
+        <a class="button" href="tv-black-sails-pl-jp.html">
+          tv black sails (pl - jp)
+        </a>
+        <a class="button" href="tv-breaking-bad-en-jp.html">
+          tv breaking bad (en - jp)
+        </a>
+        <a class="button" href="tv-breaking-bad-en-pl.html">
+          tv breaking bad (en - pl)
+        </a>
+        <a class="button" href="tv-breaking-bad-jp-en.html">
+          tv breaking bad (jp - en)
+        </a>
+        <a class="button" href="tv-breaking-bad-jp-pl.html">
+          tv breaking bad (jp - pl)
+        </a>
+        <a class="button" href="tv-breaking-bad-pl-en.html">
+          tv breaking bad (pl - en)
+        </a>
+        <a class="button" href="tv-breaking-bad-pl-jp.html">
+          tv breaking bad (pl - jp)
+        </a>
+        <a class="button" href="tv-dirk-gently-en-jp.html">
+          tv dirk gently (en - jp)
+        </a>
+        <a class="button" href="tv-dirk-gently-en-pl.html">
+          tv dirk gently (en - pl)
+        </a>
+        <a class="button" href="tv-dirk-gently-jp-en.html">
+          tv dirk gently (jp - en)
+        </a>
+        <a class="button" href="tv-dirk-gently-jp-pl.html">
+          tv dirk gently (jp - pl)
+        </a>
+        <a class="button" href="tv-dirk-gently-pl-en.html">
+          tv dirk gently (pl - en)
+        </a>
+        <a class="button" href="tv-dirk-gently-pl-jp.html">
+          tv dirk gently (pl - jp)
+        </a>
+        <a class="button" href="tv-dirty-money-en-pl.html">
+          tv dirty money (en - pl)
+        </a>
+        <a class="button" href="tv-dirty-money-pl-en.html">
+          tv dirty money (pl - en)
+        </a>
+        <a class="button" href="tv-flash-en-jp.html">
+          tv flash (en - jp)
+        </a>
+        <a class="button" href="tv-flash-en-pl.html">
+          tv flash (en - pl)
+        </a>
+        <a class="button" href="tv-flash-jp-en.html">
+          tv flash (jp - en)
+        </a>
+        <a class="button" href="tv-flash-jp-pl.html">
+          tv flash (jp - pl)
+        </a>
+        <a class="button" href="tv-flash-pl-en.html">
+          tv flash (pl - en)
+        </a>
+        <a class="button" href="tv-flash-pl-jp.html">
+          tv flash (pl - jp)
+        </a>
+        <a class="button" href="tv-lucifer-en-jp.html">
+          tv lucifer (en - jp)
+        </a>
+        <a class="button" href="tv-lucifer-en-pl.html">
+          tv lucifer (en - pl)
+        </a>
+        <a class="button" href="tv-lucifer-jp-en.html">
+          tv lucifer (jp - en)
+        </a>
+        <a class="button" href="tv-lucifer-jp-pl.html">
+          tv lucifer (jp - pl)
+        </a>
+        <a class="button" href="tv-lucifer-pl-en.html">
+          tv lucifer (pl - en)
+        </a>
+        <a class="button" href="tv-lucifer-pl-jp.html">
+          tv lucifer (pl - jp)
+        </a>
+        <a class="button" href="tv-narcos-en-jp.html">
+          tv narcos (en - jp)
+        </a>
+        <a class="button" href="tv-narcos-en-pl.html">
+          tv narcos (en - pl)
+        </a>
+        <a class="button" href="tv-narcos-jp-en.html">
+          tv narcos (jp - en)
+        </a>
+        <a class="button" href="tv-narcos-jp-pl.html">
+          tv narcos (jp - pl)
+        </a>
+        <a class="button" href="tv-narcos-pl-en.html">
+          tv narcos (pl - en)
+        </a>
+        <a class="button" href="tv-narcos-pl-jp.html">
+          tv narcos (pl - jp)
+        </a>
+        <a class="button" href="tv-vikings-en-jp.html">
+          tv vikings (en - jp)
+        </a>
+        <a class="button" href="tv-vikings-en-pl.html">
+          tv vikings (en - pl)
+        </a>
+        <a class="button" href="tv-vikings-jp-en.html">
+          tv vikings (jp - en)
+        </a>
+        <a class="button" href="tv-vikings-jp-pl.html">
+          tv vikings (jp - pl)
+        </a>
+        <a class="button" href="tv-vikings-pl-en.html">
+          tv vikings (pl - en)
+        </a>
+        <a class="button" href="tv-vikings-pl-jp.html">
+          tv vikings (pl - jp)
+        </a>
+        <a class="button" href="water-en-jp.html">
+          water (en - jp)
+        </a>
+        <a class="button" href="water-en-pl.html">
+          water (en - pl)
+        </a>
+        <a class="button" href="water-jp-en.html">
+          water (jp - en)
+        </a>
+        <a class="button" href="water-jp-pl.html">
+          water (jp - pl)
+        </a>
+        <a class="button" href="water-pl-en.html">
+          water (pl - en)
+        </a>
+        <a class="button" href="water-pl-jp.html">
+          water (pl - jp)
+        </a>
+      </div>
+    </div>
+    <hr>
+    <div>
+      <p>Do you want to contribute? Send email or create an issue on github.
+        
+    </p>
+    <br>
+
+    <a class="button" href="mailto:https://github.com/fishlang/fishlang/blob/master/README.md">More info
+    </a>
+    <a class="button" href="mailto:jaroslaw.weber@email.com">jaroslaw.weber@email.com
+    </a>
+    <a class="button" href="https://github.com/fishlang/fishlang">Github</a>
+    </div>
+  </section>
+</body>
+
+</html>

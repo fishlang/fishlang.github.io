@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fishlang - bilingual texts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Dosis|Nanum+Gothic" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114999359-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-114999359-1');
+    </script>
+
+    <style>
+        body {
+            font-family: 'Dosis', sans-serif;
+        }
+
+        .kr {
+
+            font-family: 'Nanum Gothic', sans-serif;
+
+
+        }
+    </style>
+    <script>
+        function applyFilter() {
+            // Declare variables
+            var filter, lang1, lang2;
+            lang1 = document.querySelector("#lang1").value;
+            lang2 = document.querySelector("#lang2").value;
+            //example filter text -> (en - kr)
+            filter = "(" + lang1 + " - " + lang2 + ")";
+
+            //get all btns
+            var searchList = document.querySelector("#text-list");
+            var buttons = searchList.children;
+            console.log("buttons count: " + buttons.length);
+            //filter buttons by language
+            for (var i = 0; i < buttons.length; i++) {
+                var btn = buttons[i];
+                var content = btn.innerHTML;
+                var foundAt = content.indexOf(filter)
+                //console.log("found index : " + foundAt);
+                if (foundAt > -1) {
+                    btn.style.display = "";
+                } else {
+                    btn.style.display = "none";
+                }
+            }
+        }
+        function setCookies(name, val, days) {
+            var start = new Date();
+            var end = new Date();
+            end.setTime(start.getTime() + 1000 * 60 * 60 * 24 * days);
+            document.cookie = name + "=" + escape(val) + ";expires=" + end.toGMTString();
+            applyFilter();
+        }
+        window.onload = onWindowLoad;
+
+        function onWindowLoad() {
+            var lang1 = getCookies("lang1");
+            var lang2 = getCookies("lang2");
+            if (lang1 == "") lang1 = "en";
+            if (lang2 == "") lang2 = "pl";
+            //if have any cookies
+            document.querySelector("#lang1").value = lang1;
+            document.querySelector("#lang2").value = lang2;
+            applyFilter();
+
+        }
+
+        function getCookies(cookieName) {
+            var find = cookieName + "=";
+            var splitted = document.cookie.split(';');
+            for (var i = 0; i < splitted.length; i++) {
+                var oneCookie = splitted[i];
+                while (oneCookie.charAt(0) == ' ') {
+                    oneCookie = oneCookie.substring(1);
+                }
+                if (oneCookie.indexOf(find) == 0) {
+                    return oneCookie.substring(find.length, oneCookie.length);
+                }
+            }
+            return "";
+        }
+    </script>
+</head>
+<body>
+    <section class="hero is-info is-bold has-text-centered">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                fishlang
+            </h1>
+            <h2 class="subtitle">
+                learn language with bilingual texts
+            </h2>
+
+        </div>
+    </div>
+</section>
+    <section class="section has-text-centered">
+        <div>
+            <p class="title">tv vikings (pl - en)</p>
+            <div>
+                
+<p class="pl">Ostatnio zauważyłem, że od jakiegoś czasu nie oglądałem "Wikingów".</p>
+<p class="en">Lately I noticed that I have not watched "Vikings" in a while.</p>
+
+<p class="pl">Jest to program telewizyjny emitowany na kanale "history channel".</p>
+<p class="en">It is a tv show aired on the "history channel".</p>
+
+<p class="pl">Ten serial nie jest bardzo dokładny historycznie.</p>
+<p class="en">It is not very historically accurate.</p>
+
+<p class="pl">Ale występują w nim postacie historyczne.</p>
+<p class="en">But it has historic characters.</p>
+
+<p class="pl">Uwielbiam grę aktorską w serialu.</p>
+<p class="en">I love the acting in the show.</p>
+
+<p class="pl">Zwłaszcza głównego bohatera.</p>
+<p class="en">Especially the main character.</p>
+
+<p class="pl">Aktor, który go gra, początkowo nie był zbyt popularny.</p>
+<p class="en">The actor who is playing him was not very popular at first.</p>
+
+<p class="pl">Był modelem, zanim stał się sławny.</p>
+<p class="en">He was a model before becoming famous.</p>
+
+<p class="pl">Wiele osób było zaskoczonych jego umiejętnościami aktorskimi.</p>
+<p class="en">Lot of people were surprised by his acting skills.</p>
+
+<p class="pl">Uwielbiam kostiumy i osobowości postaci w tym serialu.</p>
+<p class="en">I love the costumes and personalities of characters in this show.</p>
+
+<p class="pl">Lubię też sceny bitewne.</p>
+<p class="en">I also like battle scenes.</p>
+
+<p class="pl">Kiedy oglądałem ten program, też chciałem mieć brodę.</p>
+<p class="en">When I was watching this show, I wanted to have a beard.</p>
+
+<p class="pl">Wszystkie postacie wyglądają bardzo fajnie.</p>
+<p class="en">All the characters look very cool.</p>
+
+<p class="pl">Ten serial jest bardzo brutalny, więc nie polecam go osobom, które nie lubią brutalnych seriali.</p>
+<p class="en">The show is very brutal, so I do not recommend it for people who don't like violent shows.</p>
+
+            </div>
+        </div>
+        <hr> 
+        <a class="button is-info" href="/">
+        <span class="icon">
+  <i class="fas fa-home"></i>
+</span>
+  </a>
+    </section>
+</body>
+</html>

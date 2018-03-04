@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fishlang - bilingual texts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Dosis|Nanum+Gothic" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114999359-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-114999359-1');
+    </script>
+
+    <style>
+        body {
+            font-family: 'Dosis', sans-serif;
+        }
+
+        .kr {
+
+            font-family: 'Nanum Gothic', sans-serif;
+
+
+        }
+    </style>
+    <script>
+        function applyFilter() {
+            // Declare variables
+            var filter, lang1, lang2;
+            lang1 = document.querySelector("#lang1").value;
+            lang2 = document.querySelector("#lang2").value;
+            //example filter text -> (en - kr)
+            filter = "(" + lang1 + " - " + lang2 + ")";
+
+            //get all btns
+            var searchList = document.querySelector("#text-list");
+            var buttons = searchList.children;
+            console.log("buttons count: " + buttons.length);
+            //filter buttons by language
+            for (var i = 0; i < buttons.length; i++) {
+                var btn = buttons[i];
+                var content = btn.innerHTML;
+                var foundAt = content.indexOf(filter)
+                //console.log("found index : " + foundAt);
+                if (foundAt > -1) {
+                    btn.style.display = "";
+                } else {
+                    btn.style.display = "none";
+                }
+            }
+        }
+        function setCookies(name, val, days) {
+            var start = new Date();
+            var end = new Date();
+            end.setTime(start.getTime() + 1000 * 60 * 60 * 24 * days);
+            document.cookie = name + "=" + escape(val) + ";expires=" + end.toGMTString();
+            applyFilter();
+        }
+        window.onload = onWindowLoad;
+
+        function onWindowLoad() {
+            var lang1 = getCookies("lang1");
+            var lang2 = getCookies("lang2");
+            if (lang1 == "") lang1 = "en";
+            if (lang2 == "") lang2 = "pl";
+            //if have any cookies
+            document.querySelector("#lang1").value = lang1;
+            document.querySelector("#lang2").value = lang2;
+            applyFilter();
+
+        }
+
+        function getCookies(cookieName) {
+            var find = cookieName + "=";
+            var splitted = document.cookie.split(';');
+            for (var i = 0; i < splitted.length; i++) {
+                var oneCookie = splitted[i];
+                while (oneCookie.charAt(0) == ' ') {
+                    oneCookie = oneCookie.substring(1);
+                }
+                if (oneCookie.indexOf(find) == 0) {
+                    return oneCookie.substring(find.length, oneCookie.length);
+                }
+            }
+            return "";
+        }
+    </script>
+</head>
+<body>
+    <section class="hero is-info is-bold has-text-centered">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                fishlang
+            </h1>
+            <h2 class="subtitle">
+                learn language with bilingual texts
+            </h2>
+
+        </div>
+    </div>
+</section>
+    <section class="section has-text-centered">
+        <div>
+            <p class="title">tv black sails (jp - en)</p>
+            <div>
+                
+<p class="jp">"Black Sails"は海賊についてのドラマです。</p>
+<p class="en">"Black Sails" is a pirate tv show.</p>
+
+<p class="jp">演技はとてもいいし、とても面白いドラマですが、あまり人気ではありません。</p>
+<p class="en">The acting is very good and it is very interesting show, but it is not very popular.</p>
+
+<p class="jp">ナッソーと呼ばれる島についての話です。</p>
+<p class="en">It is a story about an island called Nassau.</p>
+
+<p class="jp">その島は海賊の島であり、政府は管理していないところです。</p>
+<p class="en">It is a pirate island and goverments do not control it.</p>
+
+<p class="jp">しかし、ある日、イギリスの政府がこの島を支配することに決めました。</p>
+<p class="en">But one day English goverment decide to take control of the island.</p>
+
+<p class="jp">だから海賊はイギリスと戦おうとしています。</p>
+<p class="en">So pirates are trying to fight England.</p>
+
+<p class="jp">海賊は自由を愛するので、島は彼らにとってとても重要なところです。</p>
+<p class="en">Pirates love freedom so the island is very important to them.</p>
+
+<p class="jp">私たちはすでに終わりを知っているので、この話は悲しいですね。</p>
+<p class="en">It is a sad story because we already know the ending.</p>
+
+<p class="jp">現代世界にはもう海賊がもうほとんどいないです。</p>
+<p class="en">There are not much pirates anymore in modern world.</p>
+
+<p class="jp">それは良いことです。</p>
+<p class="en">It is a good thing.</p>
+
+<p class="jp">しかし、ドラマの主人公のこと考えて悲しくなります。</p>
+<p class="en">But it makes me feel sad for the show main character.</p>
+
+<p class="jp">彼の戦いはすでに失われています。</p>
+<p class="en">His fight is already lost.</p>
+
+<p class="jp">でも、彼が勝ったと言う人もいるかもしれません。</p>
+<p class="en">Although some people may say that he won.</p>
+
+<p class="jp">現代の世界では海賊が愛してた自由が非常に重要であるからです。</p>
+<p class="en">Because in modern world freedom (which pirates loved) is very important to us.</p>
+
+            </div>
+        </div>
+        <hr> 
+        <a class="button is-info" href="/">
+        <span class="icon">
+  <i class="fas fa-home"></i>
+</span>
+  </a>
+    </section>
+</body>
+</html>

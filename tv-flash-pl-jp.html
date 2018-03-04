@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fishlang - bilingual texts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Dosis|Nanum+Gothic" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114999359-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-114999359-1');
+    </script>
+
+    <style>
+        body {
+            font-family: 'Dosis', sans-serif;
+        }
+
+        .kr {
+
+            font-family: 'Nanum Gothic', sans-serif;
+
+
+        }
+    </style>
+    <script>
+        function applyFilter() {
+            // Declare variables
+            var filter, lang1, lang2;
+            lang1 = document.querySelector("#lang1").value;
+            lang2 = document.querySelector("#lang2").value;
+            //example filter text -> (en - kr)
+            filter = "(" + lang1 + " - " + lang2 + ")";
+
+            //get all btns
+            var searchList = document.querySelector("#text-list");
+            var buttons = searchList.children;
+            console.log("buttons count: " + buttons.length);
+            //filter buttons by language
+            for (var i = 0; i < buttons.length; i++) {
+                var btn = buttons[i];
+                var content = btn.innerHTML;
+                var foundAt = content.indexOf(filter)
+                //console.log("found index : " + foundAt);
+                if (foundAt > -1) {
+                    btn.style.display = "";
+                } else {
+                    btn.style.display = "none";
+                }
+            }
+        }
+        function setCookies(name, val, days) {
+            var start = new Date();
+            var end = new Date();
+            end.setTime(start.getTime() + 1000 * 60 * 60 * 24 * days);
+            document.cookie = name + "=" + escape(val) + ";expires=" + end.toGMTString();
+            applyFilter();
+        }
+        window.onload = onWindowLoad;
+
+        function onWindowLoad() {
+            var lang1 = getCookies("lang1");
+            var lang2 = getCookies("lang2");
+            if (lang1 == "") lang1 = "en";
+            if (lang2 == "") lang2 = "pl";
+            //if have any cookies
+            document.querySelector("#lang1").value = lang1;
+            document.querySelector("#lang2").value = lang2;
+            applyFilter();
+
+        }
+
+        function getCookies(cookieName) {
+            var find = cookieName + "=";
+            var splitted = document.cookie.split(';');
+            for (var i = 0; i < splitted.length; i++) {
+                var oneCookie = splitted[i];
+                while (oneCookie.charAt(0) == ' ') {
+                    oneCookie = oneCookie.substring(1);
+                }
+                if (oneCookie.indexOf(find) == 0) {
+                    return oneCookie.substring(find.length, oneCookie.length);
+                }
+            }
+            return "";
+        }
+    </script>
+</head>
+<body>
+    <section class="hero is-info is-bold has-text-centered">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                fishlang
+            </h1>
+            <h2 class="subtitle">
+                learn language with bilingual texts
+            </h2>
+
+        </div>
+    </div>
+</section>
+    <section class="section has-text-centered">
+        <div>
+            <p class="title">tv flash (pl - jp)</p>
+            <div>
+                
+<p class="pl">"The Flash" to jeden z moich ulubionych programów telewizyjnych o superbohaterach.</p>
+<p class="jp">"The Flash"は私の好きなスーパーヒーロードラマの一つです。</p>
+
+<p class="pl">Flash to imię superbohatera.</p>
+<p class="jp">フラッシュはスーパーヒーローの名前です。</p>
+
+<p class="pl">Nazywa się Flash, ponieważ jest bardzo szybki.</p>
+<p class="jp">彼は非常に速いので、フラッシュと呼ばれています。</p>
+
+<p class="pl">Jest najszybszym człowiekiem na świecie.</p>
+<p class="jp">彼は世界で最も速い人です。</p>
+
+<p class="pl">Walczy on z wieloma złymi ludźmi, aby zachować pokój w swoim mieście.</p>
+<p class="jp">彼は住んでる都市で平和を保つために多くの悪者と戦います。</p>
+
+<p class="pl">Podoba mi się ten serial, ponieważ główny bohater jest bardzo optymistyczny.</p>
+<p class="jp">主人公はとても楽観的なので、私はこのドラマが好きです。</p>
+
+<p class="pl">Bez względu na to, jak trudna jest sytuacja, nie poddaje się.</p>
+<p class="jp">どんなに難しい状況であっても、彼はあきらめていません。</p>
+
+<p class="pl">Walczy o swoich przyjaciół i rodzinę.</p>
+<p class="jp">彼は自分の友人や家族のために戦っています。</p>
+
+<p class="pl">Kiedy oglądam ten serial, czuję się silniejszy i bardziej optymistyczny.</p>
+<p class="jp">このドラマを見ると、自分も強くなってもっと楽観的になってます。</p>
+
+            </div>
+        </div>
+        <hr> 
+        <a class="button is-info" href="/">
+        <span class="icon">
+  <i class="fas fa-home"></i>
+</span>
+  </a>
+    </section>
+</body>
+</html>

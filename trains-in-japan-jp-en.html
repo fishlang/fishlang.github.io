@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fishlang - bilingual texts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Dosis|Nanum+Gothic" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114999359-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-114999359-1');
+    </script>
+
+    <style>
+        body {
+            font-family: 'Dosis', sans-serif;
+        }
+
+        .kr {
+
+            font-family: 'Nanum Gothic', sans-serif;
+
+
+        }
+    </style>
+    <script>
+        function applyFilter() {
+            // Declare variables
+            var filter, lang1, lang2;
+            lang1 = document.querySelector("#lang1").value;
+            lang2 = document.querySelector("#lang2").value;
+            //example filter text -> (en - kr)
+            filter = "(" + lang1 + " - " + lang2 + ")";
+
+            //get all btns
+            var searchList = document.querySelector("#text-list");
+            var buttons = searchList.children;
+            console.log("buttons count: " + buttons.length);
+            //filter buttons by language
+            for (var i = 0; i < buttons.length; i++) {
+                var btn = buttons[i];
+                var content = btn.innerHTML;
+                var foundAt = content.indexOf(filter)
+                //console.log("found index : " + foundAt);
+                if (foundAt > -1) {
+                    btn.style.display = "";
+                } else {
+                    btn.style.display = "none";
+                }
+            }
+        }
+        function setCookies(name, val, days) {
+            var start = new Date();
+            var end = new Date();
+            end.setTime(start.getTime() + 1000 * 60 * 60 * 24 * days);
+            document.cookie = name + "=" + escape(val) + ";expires=" + end.toGMTString();
+            applyFilter();
+        }
+        window.onload = onWindowLoad;
+
+        function onWindowLoad() {
+            var lang1 = getCookies("lang1");
+            var lang2 = getCookies("lang2");
+            if (lang1 == "") lang1 = "en";
+            if (lang2 == "") lang2 = "pl";
+            //if have any cookies
+            document.querySelector("#lang1").value = lang1;
+            document.querySelector("#lang2").value = lang2;
+            applyFilter();
+
+        }
+
+        function getCookies(cookieName) {
+            var find = cookieName + "=";
+            var splitted = document.cookie.split(';');
+            for (var i = 0; i < splitted.length; i++) {
+                var oneCookie = splitted[i];
+                while (oneCookie.charAt(0) == ' ') {
+                    oneCookie = oneCookie.substring(1);
+                }
+                if (oneCookie.indexOf(find) == 0) {
+                    return oneCookie.substring(find.length, oneCookie.length);
+                }
+            }
+            return "";
+        }
+    </script>
+</head>
+<body>
+    <section class="hero is-info is-bold has-text-centered">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                fishlang
+            </h1>
+            <h2 class="subtitle">
+                learn language with bilingual texts
+            </h2>
+
+        </div>
+    </div>
+</section>
+    <section class="section has-text-centered">
+        <div>
+            <p class="title">trains in japan (jp - en)</p>
+            <div>
+                
+<p class="jp">日本では電車は非常に重要な輸送の手段です。</p>
+<p class="en">Trains are very important mean of transport in Japan.</p>
+
+<p class="jp">特に東京で。</p>
+<p class="en">Especially in Tokyo.</p>
+
+<p class="jp">東京で多くの人が電車や地下鉄で通勤しています。</p>
+<p class="en">Lot of people in Tokyo commute using trains or subway.</p>
+
+<p class="jp">大都市ではよく交通の問題があります。</p>
+<p class="en">In big cities there is always a problem of traffic.</p>
+
+<p class="jp">人が電車で移動するのを促すことで、日本はこの問題を解決しています。</p>
+<p class="en">Japan solves this problem by encouraging people to travel by train.</p>
+
+<p class="jp">東京には多くの人がいて、ほとんどの人は電車で通勤しています。</p>
+<p class="en">There are many people in Tokyo, and most of them commute using trains.</p>
+
+<p class="jp">朝の電車はとても混雑しています。</p>
+<p class="en">The morning trains are very crowded.</p>
+
+<p class="jp">時には電車に乗ろうとしている人は電車の中の人を押して電車に乗ります。</p>
+<p class="en">Sometimes people push other people inside the train to be able to enter too.</p>
+
+<p class="jp">私が最初にこれをみたとき、びっくりしました。</p>
+<p class="en">It was a shock to me when I first experienced it.</p>
+
+<p class="jp">誰も仕事に遅れたくないですね。</p>
+<p class="en">Nobody wants to be late to work.</p>
+
+<p class="jp">電車を使って移動するのはとても便利です。</p>
+<p class="en">It is very convenient to travel by a train.</p>
+
+<p class="jp">私は仕事に行く時はいつも何か面白いことをしています。</p>
+<p class="en">I always do something interesting when I am going to work.</p>
+
+<p class="jp">通常、何かを読みます。</p>
+<p class="en">Usually I just read something.</p>
+
+<p class="jp">最近、私は言語学習のサイトのアイディアができました。</p>
+<p class="en">Recently I had an idea for a language learning website.</p>
+
+<p class="jp">言語を勉強している人に役に立つといいなと思っています。</p>
+<p class="en">I hope it will help some people who are trying to learn languages.</p>
+
+            </div>
+        </div>
+        <hr> 
+        <a class="button is-info" href="/">
+        <span class="icon">
+  <i class="fas fa-home"></i>
+</span>
+  </a>
+    </section>
+</body>
+</html>

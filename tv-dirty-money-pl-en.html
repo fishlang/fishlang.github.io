@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fishlang - bilingual texts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Dosis|Nanum+Gothic" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114999359-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-114999359-1');
+    </script>
+
+    <style>
+        body {
+            font-family: 'Dosis', sans-serif;
+        }
+
+        .kr {
+
+            font-family: 'Nanum Gothic', sans-serif;
+
+
+        }
+    </style>
+    <script>
+        function applyFilter() {
+            // Declare variables
+            var filter, lang1, lang2;
+            lang1 = document.querySelector("#lang1").value;
+            lang2 = document.querySelector("#lang2").value;
+            //example filter text -> (en - kr)
+            filter = "(" + lang1 + " - " + lang2 + ")";
+
+            //get all btns
+            var searchList = document.querySelector("#text-list");
+            var buttons = searchList.children;
+            console.log("buttons count: " + buttons.length);
+            //filter buttons by language
+            for (var i = 0; i < buttons.length; i++) {
+                var btn = buttons[i];
+                var content = btn.innerHTML;
+                var foundAt = content.indexOf(filter)
+                //console.log("found index : " + foundAt);
+                if (foundAt > -1) {
+                    btn.style.display = "";
+                } else {
+                    btn.style.display = "none";
+                }
+            }
+        }
+        function setCookies(name, val, days) {
+            var start = new Date();
+            var end = new Date();
+            end.setTime(start.getTime() + 1000 * 60 * 60 * 24 * days);
+            document.cookie = name + "=" + escape(val) + ";expires=" + end.toGMTString();
+            applyFilter();
+        }
+        window.onload = onWindowLoad;
+
+        function onWindowLoad() {
+            var lang1 = getCookies("lang1");
+            var lang2 = getCookies("lang2");
+            if (lang1 == "") lang1 = "en";
+            if (lang2 == "") lang2 = "pl";
+            //if have any cookies
+            document.querySelector("#lang1").value = lang1;
+            document.querySelector("#lang2").value = lang2;
+            applyFilter();
+
+        }
+
+        function getCookies(cookieName) {
+            var find = cookieName + "=";
+            var splitted = document.cookie.split(';');
+            for (var i = 0; i < splitted.length; i++) {
+                var oneCookie = splitted[i];
+                while (oneCookie.charAt(0) == ' ') {
+                    oneCookie = oneCookie.substring(1);
+                }
+                if (oneCookie.indexOf(find) == 0) {
+                    return oneCookie.substring(find.length, oneCookie.length);
+                }
+            }
+            return "";
+        }
+    </script>
+</head>
+<body>
+    <section class="hero is-info is-bold has-text-centered">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                fishlang
+            </h1>
+            <h2 class="subtitle">
+                learn language with bilingual texts
+            </h2>
+
+        </div>
+    </div>
+</section>
+    <section class="section has-text-centered">
+        <div>
+            <p class="title">tv dirty money (pl - en)</p>
+            <div>
+                
+<p class="pl">Niedawno widziałem serię filmów dokumentalnych na netflixie.</p>
+<p class="en">Recently I saw a series of documentary movies on neflix.</p>
+
+<p class="pl">Seria ta nazywała się "Brudne pieniądze".</p>
+<p class="en">It was called "Dirty money".</p>
+
+<p class="pl">Było w niej sześć różnych historii.</p>
+<p class="en">There are six different stories.</p>
+
+<p class="pl">Jedna dotyczy niemieckiej firmy produkującej samochody.</p>
+<p class="en">One is about german car company.</p>
+
+<p class="pl">Ta firma kłamała na temat zanieczyszczenia które samochód produkował.</p>
+<p class="en">This company lied about the pollution car made.</p>
+
+<p class="pl">Byłem bardzo smutny, kiedy zobaczyłem ten odcinek.</p>
+<p class="en">I was very sad when I saw it.</p>
+
+<p class="pl">Jest też film dokumentalny na temat pożyczek krótkoterminowych.</p>
+<p class="en">There is also a documentary about short term loans.</p>
+
+<p class="pl">Wielu ludzi czuje się oszukanych kiedy podpisali umowę z firmą pożyczkową.</p>
+<p class="en">Lot of people felt cheated by the contract with loan company.</p>
+
+<p class="pl">Musieli zapłacić znacznie więcej, niż pożyczyli.</p>
+<p class="en">They had to pay much more than they borrowed.</p>
+
+<p class="pl">Ta historia była najbardziej interesująca.</p>
+<p class="en">This story was the most interesting.</p>
+
+<p class="pl">Zawierała on wiele wywiadów z szefem firmy pożyczkowej.</p>
+<p class="en">It included lot of interviews with boss of the loan company.</p>
+
+<p class="pl">Bardzo podobał mi się ten dokument pokazujący również jego perspektywę.</p>
+<p class="en">I really liked that documentary showed also his perspective.</p>
+
+<p class="pl">Ostatni dokument dotyczył Donalda Trumpa.</p>
+<p class="en">The last documentary was about Donald Trump.</p>
+
+<p class="pl">Wygrał wybory i został prezydentem.</p>
+<p class="en">He won elections and became a president.</p>
+
+<p class="pl">Ale niewielu ludzi zna szczegóły dotyczące jego przeszłości.</p>
+<p class="en">But not many people know details about his past.</p>
+
+<p class="pl">Wiele osób zna go z reality show "The Apprentice".</p>
+<p class="en">Lot of people know him from "The Apprentice" reality show.</p>
+
+<p class="pl">Dokument pokazał, że nie udało mu się wielu projektów biznesowych.</p>
+<p class="en">Documentary showed that he failed lot of his business projects.</p>
+
+<p class="pl">Nie miał wiele sukcesów w biznesie.</p>
+<p class="en">He was not very successful businessman.</p>
+
+<p class="pl">Wiele się nauczyłem z tych filmów dokumentalnych.</p>
+<p class="en">I learned a lot from those documentaries.</p>
+
+<p class="pl">Może obejrzę więcej filmów dokumentalnych w przyszłości.</p>
+<p class="en">Maybe I will watch more documentaries in the future.</p>
+
+            </div>
+        </div>
+        <hr> 
+        <a class="button is-info" href="/">
+        <span class="icon">
+  <i class="fas fa-home"></i>
+</span>
+  </a>
+    </section>
+</body>
+</html>

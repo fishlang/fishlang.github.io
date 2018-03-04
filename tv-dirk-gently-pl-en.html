@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fishlang - bilingual texts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Dosis|Nanum+Gothic" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114999359-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-114999359-1');
+    </script>
+
+    <style>
+        body {
+            font-family: 'Dosis', sans-serif;
+        }
+
+        .kr {
+
+            font-family: 'Nanum Gothic', sans-serif;
+
+
+        }
+    </style>
+    <script>
+        function applyFilter() {
+            // Declare variables
+            var filter, lang1, lang2;
+            lang1 = document.querySelector("#lang1").value;
+            lang2 = document.querySelector("#lang2").value;
+            //example filter text -> (en - kr)
+            filter = "(" + lang1 + " - " + lang2 + ")";
+
+            //get all btns
+            var searchList = document.querySelector("#text-list");
+            var buttons = searchList.children;
+            console.log("buttons count: " + buttons.length);
+            //filter buttons by language
+            for (var i = 0; i < buttons.length; i++) {
+                var btn = buttons[i];
+                var content = btn.innerHTML;
+                var foundAt = content.indexOf(filter)
+                //console.log("found index : " + foundAt);
+                if (foundAt > -1) {
+                    btn.style.display = "";
+                } else {
+                    btn.style.display = "none";
+                }
+            }
+        }
+        function setCookies(name, val, days) {
+            var start = new Date();
+            var end = new Date();
+            end.setTime(start.getTime() + 1000 * 60 * 60 * 24 * days);
+            document.cookie = name + "=" + escape(val) + ";expires=" + end.toGMTString();
+            applyFilter();
+        }
+        window.onload = onWindowLoad;
+
+        function onWindowLoad() {
+            var lang1 = getCookies("lang1");
+            var lang2 = getCookies("lang2");
+            if (lang1 == "") lang1 = "en";
+            if (lang2 == "") lang2 = "pl";
+            //if have any cookies
+            document.querySelector("#lang1").value = lang1;
+            document.querySelector("#lang2").value = lang2;
+            applyFilter();
+
+        }
+
+        function getCookies(cookieName) {
+            var find = cookieName + "=";
+            var splitted = document.cookie.split(';');
+            for (var i = 0; i < splitted.length; i++) {
+                var oneCookie = splitted[i];
+                while (oneCookie.charAt(0) == ' ') {
+                    oneCookie = oneCookie.substring(1);
+                }
+                if (oneCookie.indexOf(find) == 0) {
+                    return oneCookie.substring(find.length, oneCookie.length);
+                }
+            }
+            return "";
+        }
+    </script>
+</head>
+<body>
+    <section class="hero is-info is-bold has-text-centered">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                fishlang
+            </h1>
+            <h2 class="subtitle">
+                learn language with bilingual texts
+            </h2>
+
+        </div>
+    </div>
+</section>
+    <section class="section has-text-centered">
+        <div>
+            <p class="title">tv dirk gently (pl - en)</p>
+            <div>
+                
+<p class="pl">Po obejrzeniu wielu różnych seriali jestem bardzo wybredny.</p>
+<p class="en">After watching lot of different tv shows, I am very picky.</p>
+
+<p class="pl">Większość nowych seriali nie jest zbyt interesująca.</p>
+<p class="en">Most of new tv shows are not very interesting.</p>
+
+<p class="pl">Trudno wybrać jeden.</p>
+<p class="en">It is hard to choose one.</p>
+
+<p class="pl">Nie mogę ich wszystkich oglądać.</p>
+<p class="en">I cannot watch them all.</p>
+
+<p class="pl">Znalazłem więc nowy program, który był bardzo interesujący.</p>
+<p class="en">So I found one new show which was very interesting.</p>
+
+<p class="pl">Obejrzałem go z powodu sławnego aktora, który zagrał w tym serialu.</p>
+<p class="en">I watched it because of famous actor who was in this show.</p>
+
+<p class="pl">Ten serial nazywa się "Holistyczny detektyw Dirk Gently".</p>
+<p class="en">This show is called "Holistic detective Dirk Gently".</p>
+
+<p class="pl">Bardzo trudno go opisać.</p>
+<p class="en">It is very difficult to describe.</p>
+
+<p class="pl">Mogę spróbować opisać go za pomocą kilku przymiotników:</p>
+<p class="en">I can try to describe it with few adjectives:</p>
+
+<p class="pl">dziwny, zabawny, ponury, inteligentny, głęboki.</p>
+<p class="en">bizarre, funny, dark, clever, deep.</p>
+
+<p class="pl">Jeśli lubisz czarne komedie science-fiction, to spodoba ci się.</p>
+<p class="en">If you like dark sci-fi comedies then you will love it.</p>
+
+<p class="pl">Sprawia, że zastanawiasz się nad swoim życiem, sprawia, że śmiejesz się i płaczesz.</p>
+<p class="en">It makes you reflect on your life, it makes you laugh and cry.</p>
+
+<p class="pl">Fabuła serialu została oparta na książce.</p>
+<p class="en">The show story was based on the book.</p>
+
+            </div>
+        </div>
+        <hr> 
+        <a class="button is-info" href="/">
+        <span class="icon">
+  <i class="fas fa-home"></i>
+</span>
+  </a>
+    </section>
+</body>
+</html>

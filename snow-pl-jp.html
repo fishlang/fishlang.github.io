@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fishlang - bilingual texts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Dosis|Nanum+Gothic" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114999359-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-114999359-1');
+    </script>
+
+    <style>
+        body {
+            font-family: 'Dosis', sans-serif;
+        }
+
+        .kr {
+
+            font-family: 'Nanum Gothic', sans-serif;
+
+
+        }
+    </style>
+    <script>
+        function applyFilter() {
+            // Declare variables
+            var filter, lang1, lang2;
+            lang1 = document.querySelector("#lang1").value;
+            lang2 = document.querySelector("#lang2").value;
+            //example filter text -> (en - kr)
+            filter = "(" + lang1 + " - " + lang2 + ")";
+
+            //get all btns
+            var searchList = document.querySelector("#text-list");
+            var buttons = searchList.children;
+            console.log("buttons count: " + buttons.length);
+            //filter buttons by language
+            for (var i = 0; i < buttons.length; i++) {
+                var btn = buttons[i];
+                var content = btn.innerHTML;
+                var foundAt = content.indexOf(filter)
+                //console.log("found index : " + foundAt);
+                if (foundAt > -1) {
+                    btn.style.display = "";
+                } else {
+                    btn.style.display = "none";
+                }
+            }
+        }
+        function setCookies(name, val, days) {
+            var start = new Date();
+            var end = new Date();
+            end.setTime(start.getTime() + 1000 * 60 * 60 * 24 * days);
+            document.cookie = name + "=" + escape(val) + ";expires=" + end.toGMTString();
+            applyFilter();
+        }
+        window.onload = onWindowLoad;
+
+        function onWindowLoad() {
+            var lang1 = getCookies("lang1");
+            var lang2 = getCookies("lang2");
+            if (lang1 == "") lang1 = "en";
+            if (lang2 == "") lang2 = "pl";
+            //if have any cookies
+            document.querySelector("#lang1").value = lang1;
+            document.querySelector("#lang2").value = lang2;
+            applyFilter();
+
+        }
+
+        function getCookies(cookieName) {
+            var find = cookieName + "=";
+            var splitted = document.cookie.split(';');
+            for (var i = 0; i < splitted.length; i++) {
+                var oneCookie = splitted[i];
+                while (oneCookie.charAt(0) == ' ') {
+                    oneCookie = oneCookie.substring(1);
+                }
+                if (oneCookie.indexOf(find) == 0) {
+                    return oneCookie.substring(find.length, oneCookie.length);
+                }
+            }
+            return "";
+        }
+    </script>
+</head>
+<body>
+    <section class="hero is-info is-bold has-text-centered">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                fishlang
+            </h1>
+            <h2 class="subtitle">
+                learn language with bilingual texts
+            </h2>
+
+        </div>
+    </div>
+</section>
+    <section class="section has-text-centered">
+        <div>
+            <p class="title">snow (pl - jp)</p>
+            <div>
+                
+<p class="pl">Zima w Europie jest bardzo zimna.</p>
+<p class="jp">ヨーロッパの冬はとても寒いです。</p>
+
+<p class="pl">Dzieci w Europie często bawią się śniegiem w zimie.</p>
+<p class="jp">ヨーロッパの子供たちは、冬の時雪遊びをします。</p>
+
+<p class="pl">Robią bałwana lub rzucają śnieżkami.</p>
+<p class="jp">雪だるまを作ったり、雪玉を投げたりする。</p>
+
+<p class="pl">Ludzie często chcą, aby śnieg spadł na Boże Narodzenie.</p>
+<p class="jp">人々はクリスマスに雪が降るの期待しています。</p>
+
+<p class="pl">Ale śnieg może być również problemem.</p>
+<p class="jp">しかし、雪が問題になることもあります。</p>
+
+<p class="pl">Zwłaszcza w zwykle ciepłych krajach.</p>
+<p class="jp">暖かい国では特にそうです。</p>
+
+<p class="pl">Ciepłe kraje nie są przygotowane na śnieg.</p>
+<p class="jp">温暖な国は雪が降ることにあまり準備していません。</p>
+
+<p class="pl">Za każdym razem, gdy śnieg pada w Tokio, ludzie spóźniają się do pracy.</p>
+<p class="jp">東京に雪が降るたびに、人は仕事に遅刻します。</p>
+
+<p class="pl">Ale w Europie wiele krajów jest przygotowanych na śnieg.</p>
+<p class="jp">しかし、ヨーロッパでは多くの国が雪が普通だからちゃんと準備しています。</p>
+
+<p class="pl">Czy w twoim kraju pada śnieg?</p>
+<p class="jp">あなたの国に雪がありますか？</p>
+
+            </div>
+        </div>
+        <hr> 
+        <a class="button is-info" href="/">
+        <span class="icon">
+  <i class="fas fa-home"></i>
+</span>
+  </a>
+    </section>
+</body>
+</html>
